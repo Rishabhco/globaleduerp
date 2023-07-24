@@ -75,12 +75,15 @@ function CommunicationTabs({navigation}) {
   }
 
   return (
-    <Tab.Navigator>
+    <Tab.Navigator screenOptions={{
+      swipeEnabled: false,
+    }}>
       {commType.map((item, index) => (
         <Tab.Screen
           key={index}
           name={item.name}
           listeners={({tabPress: () => onTabPress(item.name)})}
+
         >
           {() => <Communication filterComm={filterComm} tabIcon={selectedTabIcon} navigation={navigation} />}
         </Tab.Screen>
