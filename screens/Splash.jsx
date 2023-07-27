@@ -1,9 +1,19 @@
 import React,{useEffect} from 'react';
-import { View, Image, StyleSheet } from 'react-native';
+import { PermissionsAndroid,View, Image, StyleSheet } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Splash = ({navigation}) => {
-    useEffect(() => {
+    const checkApplicationPermission = async () => {
+        if (Platform.OS === 'android') {
+            try {
+                await PermissionsAndroid.request(PermissionsAndroid.PERMISSIONS.POST_NOTIFICATIONS,);
+            } catch (error) {
+                console.log(error);
+            }
+        }
+    };
+    useEffect(() => {  
+        checkApplicationPermission();
         AsyncStorage.getItem('isLoggedIn').then(val=>{
             if(val==="true"){
                 setTimeout(() => {

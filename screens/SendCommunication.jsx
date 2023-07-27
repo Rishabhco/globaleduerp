@@ -87,10 +87,10 @@ const SendCommunication = ({navigation}) => {
             let uploadedFiles = 0;
             setUploadProgress({ current: uploadedFiles, total: totalFiles });
             for (const item of attachment) {
-              const res = await upload(item[0], FileUploadTypeEnum.SendSMSEmail);
-              files.push(res);
-              uploadedFiles++;
-              setUploadProgress({ current: uploadedFiles, total: totalFiles });
+                const res = await upload(item[0], FileUploadTypeEnum.SendSMSEmail);
+                files.push(res);
+                uploadedFiles++;
+                setUploadProgress({ current: uploadedFiles, total: totalFiles });
             }
             let attachmentString = "";
             for (const file of files) {attachmentString += file.FilePath + "|" + file.ActualFileName + ",";}

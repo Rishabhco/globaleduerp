@@ -5,7 +5,6 @@ const upload=async(file,fileType)=>{
         const formData=new FormData();
         formData.append(file.name, file);
         formData.append('fileUploadType', fileType.toString());
-        console.log("formData:", formData);
         uploadFile(formData).then((res)=>{
             resolve(res.data[0])
         }).catch((err)=>{
